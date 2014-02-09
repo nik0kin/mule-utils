@@ -1,6 +1,9 @@
 /**
  * responseUtils
  * - @nikpoklitar
+ *
+ * http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+ * https://dev.twitter.com/docs/error-codes-responses
  */
 
 var winston = require('winston');
@@ -11,60 +14,127 @@ exports.getNewResponseJSON = function () {
     statusMsg : "Default Success"
   };
 };
-//TODO refactor these mofos
-exports.sendBadRequestCallback = function (res) {
-  return function (_err) {
-    winston.error(_err);
 
-    res.status(400).send({
-      status: -1,
-      statusMsg: _err
-    });
-  }
-};
+///////// RESPONSE HELPERS /////////////
 
-exports.sendForbiddenError = function (res, err) {
+exports.sendResponse = function (params, res, err) {
+  var responseCode = params.responseCode;
+  var messageString = params.messageString;
+
   var response = exports.getNewResponseJSON();
   response.status = -1;
+
+  err.errorMsg = messageString;
   response.statusMsg = err;
-  return res.status(403).send(response);
+  winston.error('Sending Error Response (' + messageString + ')', err);
+
+  return res.status(responseCode).send(response);
 };
 
-exports.sendNotFoundErrorCallback = function (res) {
+exports.sendResponseCallback = function (params, res) {
   return function (err) {
-    return res.status(404).send(err);
+    return exports.sendResponse(params, res, err);
   };
 };
-
-exports.sendNotAcceptableErrorCallback = function (res) {
-  return function (err) {
-    return res.status(406).send({
-      status: -1,
-      statusMsg: err
-    });
-  };
-};
-
 
 ///////// SERVER ERRORS /////////////
 
+// 400 : Bad Request : The request cannot be fulfilled due to bad syntax ///
+
+var badRequestParams = {
+  responseCode : 400,
+  messageString : 'Bad Request'
+};
+
+exports.sendBadRequest = function (res, err) {
+  return exports.sendResponse(badRequestParams, res, err);
+};
+exports.sendBadRequestCallback = function (res) {
+  return exports.sendResponseCallback(badRequestParams, res);
+};
+
+// 401 : Unauthorized : Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided. ///
+
+var unauthorizedParams = {
+  responseCode : 401,
+  messageString : 'Unauthorized'
+};
+
+exports.sendUnauthorizedError = function (res, err) {
+  return exports.sendResponse(unauthorizedParams, res, err);
+};
+exports.sendUnauthorizedErrorCallback = function (res) {
+  return exports.sendResponseCallback(unauthorizedParams, res);
+};
+
+/// 403 : Forbidden : The request is understood, but it has been refused or access is not allowed. ///
+
+var forbiddenParams = {
+  responseCode : 403,
+  messageString : 'Forbidden'
+};
+
+exports.sendForbiddenError = function (res, err) {
+  return exports.sendResponse(forbiddenParams, res, err);
+};
+exports.sendForbiddenErrorCallback = function (res) {
+  return exports.sendResponseCallback(forbiddenParams, res);
+};
+
+/// 404 : Not Found : The URI requested is invalid or the resource requested, such as a user, does not exists. ///
+
+var notFoundParams = {
+  responseCode : 404,
+  messageString : 'Not Found'
+};
+
+exports.sendNotFoundError = function (res, err) {
+  return exports.sendResponse(notFoundParams, res, err);
+};
+exports.sendNotFoundErrorCallback = function (res) {
+  return exports.sendResponseCallback(notFoundParams, res);
+};
+
+/// 406 : Not Acceptable : Returned when an invalid format is specified in the request. ///
+
+var notAcceptableParams = {
+  responseCode : 406,
+  messageString : 'Not Acceptable'
+};
+
+exports.sendNotAcceptableError = function (res, err) {
+  return exports.sendResponse(notAcceptableParams, res, err);
+};
+exports.sendNotAcceptableErrorCallback = function (res) {
+  return exports.sendResponseCallback(notAcceptableParams, res);
+};
+
+///////// SERVER ERRORS /////////////
+
+/// 500 : Internal Server Error : Something is broken. Something in MULE CODE is wrong ///
+
+var internalServerErrorParams = {
+  responseCode : 500,
+  messageString : 'Internal Server Error'
+};
+
 exports.sendInternalServerError = function (res, err) {
-  var response = exports.getNewResponseJSON();
-  response.status = -1;
-  response.statusMsg = err;
-  return res.status(500).send(response);
+  return exports.sendResponse(internalServerErrorParams, res, err);
 };
-
 exports.sendInternalServerErrorCallback = function (res) {
-  return function (err) {
-    winston.error('error...(sendInternalServerErrorCallback)', err);
-    return exports.sendInternalServerError(res, err);
-  };
+  return exports.sendResponseCallback(internalServerErrorParams, res);
 };
 
-exports.sendNotYetImplemented = function (res, msg) {
-  var response = exports.getNewResponseJSON();
-  response.status = -1;
-  response.statusMsg = msg;
-  return res.status(501).send(response);
+/// 501 : Not Yet Implemented ///
+
+var notYetImplementedParams = {
+  responseCode : 501,
+  messageString : 'Not Yet Implemented'
+};
+
+exports.sendNotYetImplemented = function (res, err) {
+  return exports.sendResponse(notYetImplementedParams, res, err);
+};
+exports.sendNotYetImplementedCallback = function (res) {
+  return exports.sendResponseCallback(notYetImplementedParams, res);
 };
