@@ -10,8 +10,10 @@
     "test": "grunt"
   },
   "dependencies": {
-    "winston": "latest",
-    "underscore": "*"
+    "winston": "*",
+    "underscore": "*",
+    "mongoose": "*",
+    "mongoose-q": "*"
   },
   "devDependencies": {
     "mocha": "*",
