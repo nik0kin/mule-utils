@@ -28,10 +28,10 @@ return err if not
 //return a promise
 exports.promiseToValidate = function(jsonBody) {
   var gameConfigParamSpec = {
-    name:         {required: true, type : 'string'},
-    maxPlayers: {required: true, type : 'number'},
+    name:         {required: true, type : 'string'}/*,
+    maxPlayers: {required: true, type : 'number'}, // TODO remove. this is kinda useless now
     width:        {required: true, type : 'number'}, //might be tied to RuleBundle later
-    height:       {required: true, type : 'number'}/*,
+    height:       {required: true, type : 'number'},
     fog:          {required: true, type : 'string'}, //tied to RuleBundle
     turnStyle:    {required: true, type : 'string'}*/
   };
