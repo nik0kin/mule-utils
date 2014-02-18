@@ -15,3 +15,16 @@ exports.isInt = function (n) {
 exports.isIntegerMinMaxValid = function (number, minMaxObject) {
   return number >= minMaxObject.min && number <= minMaxObject.max;
 };
+
+exports.validateIntegerInArrayOrMinMax = function (ruleBundleParamSpec, paramInt) {
+  //array
+  if (_.isArray(ruleBundleParamSpec)){
+    return _.contains(ruleBundleParamSpec, paramInt);
+  }
+  //minmax
+  if (exports.isMinMaxIntegerObject(ruleBundleParamSpec)){
+    return exports.isIntegerMinMaxValid(paramInt, ruleBundleParamSpec);
+  }
+
+  throw 'bad ruleBundle Spec';
+};
