@@ -56,7 +56,7 @@ exports.validateBodyValueWithParam = function(specKey, bodyValue, parameterSpec)
           break;
         case "string":
         case "String":
-          if (_.isString(bodyValue) && bodyValue.length > 0){
+          if (_.isString(bodyValue) ){
             resolve(bodyValue);
           } else {
             reject('empty or not string:' + specKey)

@@ -11,6 +11,7 @@ exports.shouldGoHereCallback = exports.generateDoneCallback;
 
 exports.shouldntGoHereCallback = function(done) {
   return function(err) {
+    console.log(err)
     done("this shouldn't throw here: " + err);
   };
 };

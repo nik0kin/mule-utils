@@ -190,19 +190,19 @@ describe("Utils", function(){
 
         describe("anything thats a string works?" , function() {
 
-          it('case4', function(done){
+          it('case1', function(done){
             utils.validateJSONBody({"stringkey" : "apple" }, requiredParams, function (validatedParams){
               should(validatedParams).have.property('stringkey', "apple");
               done();
             }, help.shouldntGoHereCallback(done));
           });
-          it('case4', function(done){
+          it('case2', function(done){
             utils.validateJSONBody({"stringkey" : "1000000000000" }, requiredParams, function (validatedParams){
               should(validatedParams).have.property('stringkey', "1000000000000");
               done();
             }, help.shouldntGoHereCallback(done));
           });
-          it('case4', function(done){
+          it('case3', function(done){
             utils.validateJSONBody({"stringkey" : "" }, requiredParams, function (validatedParams){
               should(validatedParams).have.property('stringkey', "");
               done();
