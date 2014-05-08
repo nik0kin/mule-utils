@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "winston": "*",
-    "underscore": "*",
+    "lodash": "*",
     "mongoose": "*",
     "mongoose-q": "*"
   },
@@ -29,9 +29,19 @@
     "type": "git",
     "url": "http://github.com/nik0kin/mule-utils"
   },
-  "author": "@nikpoklitar",
+  "author": {
+    "name": "@nikpoklitar"
+  },
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/nik0kin/mule-utils/issues"
-  }
+  },
+  "readme": "mule-utils\n==========\n\nUtilities for ProjectMule\n",
+  "readmeFilename": "README.md",
+  "_id": "mule-utils@0.1.1",
+  "dist": {
+    "shasum": "76564fd497dfad9bdac90b39b4a65f3a9e17b8d6"
+  },
+  "_resolved": "git+https://github.com/nik0kin/mule-utils.git#84510ce5cdb2ace04d70a27c8ba4bcdc56f95700",
+  "_from": "mule-utils@git+https://github.com/nik0kin/mule-utils.git#master"
 }

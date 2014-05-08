@@ -4,7 +4,7 @@
  * Created by niko on 1/26/14.
  */
 var Q = require('q');
-var _ = require('underscore');
+var _ = require('lodash');
 
 //check if its boolean
 //and returns 'undefined' if its not valid
