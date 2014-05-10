@@ -4,7 +4,7 @@
  * Created by niko on 1/21/14.
  */
 
-var _ = require("underscore"),
+var _ = require("lodash"),
   Q = require('q');
 
 var help = require('./jsonUtilsHelper');
