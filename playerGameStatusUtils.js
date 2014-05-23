@@ -9,6 +9,8 @@ exports.validatePlayerStatus = function (playerStatus) {
     case 'inGame' :
     case 'kicked' :
     case 'surrendered' :
+    case 'won' :
+    case 'lost' :
       return true;
     default:
       return false;

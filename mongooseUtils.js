@@ -14,5 +14,13 @@ global.getMongoose = function () {
   mongooseObject = require('mongoose-q')(require('mongoose'));
   mongooseObject.connect(config.db);
 
+  var db = mongooseObject.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function callback () {
+    console.log('MongoDB online');
+  });
+  // put this under mule-models/node_modules/mule-utils
+
+  console.log('returning mongooseObject')
   return mongooseObject;
 };
