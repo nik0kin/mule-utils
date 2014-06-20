@@ -28,7 +28,7 @@ exports.getClassesFromPieces = function (pieces, className) {
 
   _.each(pieces, function (value, key) {
     if (value.class === className) {
-      found = value;
+      found.push(value);
     }
   });
 
