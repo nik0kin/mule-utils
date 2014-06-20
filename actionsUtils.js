@@ -22,3 +22,15 @@ exports.searchThruPiecesForId = function (pieces, pieceId) {
   });
   return found;
 };
+
+exports.getClassesFromPieces = function (pieces, className) {
+  var found = [];
+
+  _.each(pieces, function (value, key) {
+    if (value.class === className) {
+      found = value;
+    }
+  });
+
+  return found;
+};
