@@ -17,3 +17,9 @@ exports.pickRandom = function (array, picks) {
 exports.getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+exports.getRandomValue = function (array) {
+  if (array.length < 1)
+    return undefined;
+  return array[exports.getRandomInt(1, array.length) - 1];
+};
