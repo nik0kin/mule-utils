@@ -23,6 +23,12 @@ exports.searchThruPiecesForId = function (pieces, pieceId) {
   return found;
 };
 
+exports.searchForPiecesByOwnerIdOnSpaceId = function (pieces, spaceId, ownerId) {
+  return _.filter(pieces, function (piece) {
+    return piece.locationId === spaceId && piece.ownerId === ownerId;
+  });
+};
+
 exports.getClassesFromPieces = function (pieces, className) {
   var found = [];
 
