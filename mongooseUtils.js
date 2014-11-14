@@ -17,7 +17,7 @@ global.getMongoose = function () {
   var db = mongooseObject.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
-    console.log('MongoDB online');
+    console.log('MongoDB online: ' + config.db);
   });
   // put this under mule-models/node_modules/mule-utils
 
