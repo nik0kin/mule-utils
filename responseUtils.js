@@ -27,6 +27,7 @@ exports.sendResponse = function (params, res, err) {
   err.errorMsg = messageString;
   response.statusMsg = err;
   winston.error('Sending Error Response (' + messageString + ')', err);
+  console.log(err);
 
   return res.status(responseCode).send(response);
 };
