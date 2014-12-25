@@ -2,11 +2,11 @@
 
 var _ = require('lodash');
 
-exports.doesGameContainPlayerID = function (playerID, game) {
+exports.doesGameContainPlayerId = function (playerId, game) {
   var answer = false;
 
   _.each(game.players, function (value, key) {
-    if (value.playerID == playerID){
+    if (value.playerId == playerId){
       answer = true;
     }
   });
