@@ -10,10 +10,11 @@
     "test": "grunt"
   },
   "dependencies": {
-    "winston": "*",
+    "colors": "^1.0.3",
     "lodash": "*",
     "mongoose": "*",
-    "mongoose-q": "*"
+    "mongoose-q": "*",
+    "winston": "*"
   },
   "devDependencies": {
     "mocha": "*",
