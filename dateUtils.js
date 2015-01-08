@@ -20,3 +20,8 @@ exports.getDateString = function () {
   return (d.getMonth()+1) + '/'+ d.getDate() + '/' + String(d.getFullYear()).substring(2,4)
       + '-' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '.' + d.getMilliseconds(); 
 };
+
+exports.getTimeString = function () {
+  var d = new Date();
+  return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '.' + d.getMilliseconds(); 
+};
