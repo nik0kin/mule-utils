@@ -30,7 +30,7 @@ var baseLog = function (ll, color, message, gameId, metadata) {
   if (logLevel >= ll) {
     winston.log('info', levels[ll], message, gameId, metadata);
     var idStr = !!gameId ? '[' + toDressShortId(gameId) + '] ' : ' ',
-      metadataString = !!metadata && metadata.toString !== '[object Object]' ? metadata.toString() : JSON.stringify(metadata),
+      metadataString = !!metadata && metadata.toString() !== '[object Object]' ? metadata.toString() : JSON.stringify(metadata),
       metaStr = !!metadata ? ' | ' + metadataString : '';
     console.log('[' + levels[ll][color] + '][' + dateUtils.getTimeString() + ']' + idStr + message + metaStr);
 
