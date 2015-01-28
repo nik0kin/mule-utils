@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "colors": "^1.0.3",
-    "lodash": "*",
+    "lodash": "~2.4.1",
     "mongoose": "*",
     "mongoose-q": "*",
     "winston": "*"
