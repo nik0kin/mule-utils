@@ -11,17 +11,18 @@
   },
   "dependencies": {
     "colors": "^1.0.3",
-    "lodash": "~2.4.1",
-    "Winston": "2.4.2"
+    "lodash": "4.17.11",
+    "q": "^1.5.1",
+    "winston": "2.4.2"
   },
   "devDependencies": {
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-simple-mocha": "~0.4.0",
     "mocha": "*",
     "should": "*",
-    "time-grunt": "*",
-    "grunt-simple-mocha": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-jshint": "~0.7.1",
-    "supertest": "0.8.2"
+    "supertest": "0.8.2",
+    "time-grunt": "*"
   },
   "repository": {
     "type": "git",
